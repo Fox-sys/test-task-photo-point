@@ -16,7 +16,7 @@
         Http.send();
         Http.onreadystatechange = (e) => {
             let p = document.getElementsByClassName('currency')[0];
-            p.innerHTML = Http.responseText;
+            p.innerHTML = JSON.stringify(JSON.parse(Http.responseText)["result"]);
         }
 
     }, 10000);
