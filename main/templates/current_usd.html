@@ -1,0 +1,25 @@
+<!Doctype html>
+<html lang="en">
+<head>
+    <title>Current-usd</title>
+</head>
+<body>
+<p class="currency">
+    {{ exchange_str }}
+</p>
+<script lang="javascript">
+    const Http = new XMLHttpRequest();
+    const url = 'http://' + window.location.hostname + ":" + window.location.port + "/get_current_usd_api/";
+    console.log(url);
+    setInterval(function () {
+        Http.open("GET", url);
+        Http.send();
+        Http.onreadystatechange = (e) => {
+            let p = document.getElementsByClassName('currency')[0];
+            p.innerHTML = Http.responseText;
+        }
+
+    }, 10000);
+</script>
+</body>
+</html>
